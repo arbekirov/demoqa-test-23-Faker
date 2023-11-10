@@ -8,16 +8,17 @@ import pages.RegistrationPage;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static tests.TestData.*;
 
 public class TextBoxTests extends TestBase{
 
     RegistrationPage registrationPage = new RegistrationPage();
-
+    TestData testData = new TestData();
     @Test
     void formCreateStudent() {
         registrationPage.openPage()
-                .setFirstName("Arseny")
-                .setLastName("Bek")
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
                 .setEmail("arb@sink.com")
                 .setGender("Male")
                 .setUserNumber("8989777777")
@@ -29,7 +30,8 @@ public class TextBoxTests extends TestBase{
                 .setStateAndCity("NCR","Delhi");
 
 
-        registrationPage.checkResult("Student Name", "Arseny Bek")
+        registrationPage.checkResult("Student Name",testData.firstName)
+                .checkResult("Student Name",testData.lastName)
                 .checkResult("Student Email", "arb@sink.com")
                 .checkResult("Gender", "Male")
                 .checkResult("Mobile", "8989777777")
@@ -43,15 +45,16 @@ public class TextBoxTests extends TestBase{
     @Test
     void formCreateStudentMinimal() {
         registrationPage.openPage()
-                .setFirstName("Arseny")
-                .setLastName("Bek")
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
                 .setGender("Male")
                 .setUserNumber("8989777777")
                 .setSubmitForm();
 
 
 
-        registrationPage.checkResultMinimum("Student Name", "Arseny Bek")
+        registrationPage.checkResultMinimum("Student Name",testData.firstName)
+                .checkResultMinimum("Student Name",testData.lastName)
                 .checkResultMinimum("Gender", "Male")
                 .checkResultMinimum("Mobile","8989777777");
 
