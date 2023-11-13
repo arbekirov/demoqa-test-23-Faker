@@ -19,27 +19,29 @@ public class TextBoxTests extends TestBase{
         registrationPage.openPage()
                 .setFirstName(testData.firstName)
                 .setLastName(testData.lastName)
-                .setEmail("arb@sink.com")
-                .setGender("Male")
-                .setUserNumber("8989777777")
-                .setDateOfBirth("15", "May","1996")
-                .setSubject("History")
-                .setHobbiesWrapper("Sports")
+                .setEmail(testData.email)
+                .setGender(testData.gender)
+                .setUserNumber(testData.phoneNumber)
+                .setDateOfBirth(testData.yearBirth, testData.monthBirth, testData.dayOfBirth)
+                .setSubject(testData.subjects)
+                .setHobbiesWrapper(testData.hobbies)
                 .setUploadPicture("photography.png")
-                .setAddress("street road")
+                .setAddress(testData.address)
                 .setStateAndCity("NCR","Delhi");
 
 
         registrationPage.checkResult("Student Name",testData.firstName)
                 .checkResult("Student Name",testData.lastName)
-                .checkResult("Student Email", "arb@sink.com")
-                .checkResult("Gender", "Male")
-                .checkResult("Mobile", "8989777777")
-                .checkResult("Date of Birth", "15 May,1996")
-                .checkResult("Subjects", "History")
-                .checkResult("Hobbies", "Sports")
+                .checkResult("Student Email", testData.email)
+                .checkResult("Gender", testData.gender)
+                .checkResult("Mobile", testData.phoneNumber)
+                .checkResult("Date of Birth",testData.yearBirth)
+                .checkResult("Date of Birth", testData.monthBirth)
+                .checkResult("Date of Birth", testData.dayOfBirth)
+                .checkResult("Subjects", testData.subjects)
+                .checkResult("Hobbies", testData.hobbies)
                 .checkResult("Picture", "photography.png")
-                .checkResult("Address", "street road")
+                .checkResult("Address", testData.address)
                 .checkResult("State and City", "NCR Delhi");
     }
     @Test
@@ -47,16 +49,16 @@ public class TextBoxTests extends TestBase{
         registrationPage.openPage()
                 .setFirstName(testData.firstName)
                 .setLastName(testData.lastName)
-                .setGender("Male")
-                .setUserNumber("8989777777")
+                .setGender(testData.gender)
+                .setUserNumber(testData.phoneNumber)
                 .setSubmitForm();
 
 
 
         registrationPage.checkResultMinimum("Student Name",testData.firstName)
                 .checkResultMinimum("Student Name",testData.lastName)
-                .checkResultMinimum("Gender", "Male")
-                .checkResultMinimum("Mobile","8989777777");
+                .checkResultMinimum("Gender", testData.gender)
+                .checkResultMinimum("Mobile", testData.phoneNumber);
 
     }
     @Test
