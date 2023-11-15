@@ -27,7 +27,7 @@ public class TextBoxTests extends TestBase{
                 .setHobbiesWrapper(testData.hobbies)
                 .setUploadPicture("photography.png")
                 .setAddress(testData.address)
-                .setStateAndCity("NCR","Delhi");
+                .setStateAndCity(testData.state, testData.city);
 
 
         registrationPage.checkResult("Student Name",testData.firstName)
@@ -42,7 +42,8 @@ public class TextBoxTests extends TestBase{
                 .checkResult("Hobbies", testData.hobbies)
                 .checkResult("Picture", "photography.png")
                 .checkResult("Address", testData.address)
-                .checkResult("State and City", "NCR Delhi");
+                .checkResult("State and City",testData.state)
+                .checkResult("State and City",testData.city);
     }
     @Test
     void formCreateStudentMinimal() {
@@ -68,7 +69,7 @@ public class TextBoxTests extends TestBase{
 
 
 
-        registrationPage.checkInputInvalidBorderColor("border-color","rgb(220, 53, 69)")
-                .checkRadioInvalidBorderColor("border-color","rgb(220, 53, 69)");
+        registrationPage.checkInputInvalidBorderColor("border-color",testData.borderColorInput)
+                .checkRadioInvalidBorderColor("border-color", testData.borderColorRadio);
     }
 }

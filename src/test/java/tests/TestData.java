@@ -19,12 +19,25 @@ public class TestData
             dayOfBirth = String.format("%02d", faker.number().numberBetween(1,28)),
             subjects = faker.options().option("English", "Chemistry", "Commerce"),
             hobbies = faker.options().option("Sports", "Reading", "Music"),
-            address = faker.address().fullAddress();
+            address = faker.address().fullAddress(),
+            state = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan"),
+            city = setRandomCity(state),
+            borderColorInput = faker.options().option("rgb(220, 53, 69)"),
+            borderColorRadio = faker.options().option("rgb(220, 53, 69)");
 
-
-
-
-
+    public static String setRandomCity(String state) {
+        Faker faker = new Faker();
+        switch (state) {
+            case "NCR":
+                return faker.options().option("Delhi", "Gurgaon", "Noida");
+            case "Uttar Pradesh":
+                return faker.options().option("Agra", "Lucknow", "Merrut");
+            case "Haryana":
+                return faker.options().option("Karnal", "Panipat");
+            case "Rajasthan":
+                return faker.options().option("Jaipur", "Jaiselmer");
+            default:
+                throw new IllegalArgumentException("Invalid state: " + state);
+        }
+    }
 }
-
-//"15", "May","1996"

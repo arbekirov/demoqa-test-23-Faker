@@ -104,20 +104,16 @@ public class RegistrationPage {
 
     }
 
-    public RegistrationPage setStateAndCity(String state, String city) {
+    public void setStateAndCity(String state, String city) {
         stateDropdown.scrollTo().click();
         stateInput.val(state).pressEnter();
         cityDropdown.click();
         cityInput.val(city).pressEnter().pressTab().pressEnter();
 
-        return this;
-
     }
 
-    public RegistrationPage setSubmitForm() {
+    public void setSubmitForm() {
         submitFormInput.click();
-
-        return this;
 
     }
 
