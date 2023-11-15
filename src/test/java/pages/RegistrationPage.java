@@ -2,15 +2,13 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
-import pages.components.CheckResultComponent;
-import tests.TestBase;
+import pages.components.ResultTableComponent;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
-import java.util.Arrays;
-import java.util.List;
+
 public class RegistrationPage {
 
     public RegistrationPage openPage(){
@@ -40,7 +38,7 @@ public class RegistrationPage {
             CheckResultInput = $(".table-responsive");
 
     CalendarComponent calendarComponent = new CalendarComponent();
-    CheckResultComponent checkResultComponent = new CheckResultComponent();
+    ResultTableComponent resultTableComponent = new ResultTableComponent();
 
     public RegistrationPage setFirstName(String value) {
         firstNameInput.setValue(value);
@@ -119,7 +117,7 @@ public class RegistrationPage {
 
     public RegistrationPage checkResult(String key, String value) {
         CheckResultInput.$(byText(key)).parent().shouldHave(text(value));
-        checkResultComponent.checkKeyValue(key, value);
+        resultTableComponent.checkKeyValue(key, value);
 
 
         return this;
